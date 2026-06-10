@@ -1,0 +1,10 @@
+node_modules
+dist
+.git
+.vercel
+*.local
+*.log
+*.zip
+edgeone-single-*.html
+edgeone-single-upload/
+verification/
