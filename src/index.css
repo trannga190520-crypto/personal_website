@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+}
+
+:root {
+  color: #171717;
+  background: #f4f6f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  letter-spacing: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f4f6f4;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #2f6f73;
+  color: #ffffff;
+}
+
+.section-shell {
+  width: 100%;
+  padding: 72px 20px;
+}
+
+.section-shell > * {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.soft-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.thanks-main-container {
+  display: flex;
+  width: min(100%, 300px);
+  height: 108px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d7ddd8;
+  color: #5c5a54;
+  background: #ffffff;
+}
+
+.thanks-tooltip-container {
+  --background: #2f6f73;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  padding: 0 0.2em;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.thanks-main-container:hover .thanks-text,
+.thanks-tooltip-container:focus-visible .thanks-text {
+  color: #2f6f73;
+}
+
+.thanks-tooltip {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  padding: 0.35em 0.7em;
+  white-space: nowrap;
+  opacity: 0;
+  color: #ffffff;
+  background: var(--background);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.thanks-tooltip::before {
+  position: absolute;
+  bottom: -0.2em;
+  left: 50%;
+  width: 0.6em;
+  height: 0.6em;
+  content: "";
+  transform: translate(-50%) rotate(45deg);
+  background: var(--background);
+}
+
+.thanks-tooltip-container:hover .thanks-tooltip,
+.thanks-tooltip-container:focus-visible .thanks-tooltip {
+  top: -150%;
+  border-radius: 0.25em;
+  opacity: 1;
+  visibility: visible;
+}
+
+.thanks-text {
+  margin-right: 4px;
+  height: fit-content;
+  border-bottom: 2px solid var(--background);
+  font-size: 1rem;
+  font-weight: 700;
+  animation: thanks-bounce 1s infinite;
+}
+
+.thanks-text:last-child {
+  margin-right: 0;
+}
+
+.thanks-text:hover {
+  animation: none;
+}
+
+@keyframes thanks-bounce {
+  50% {
+    color: #2f6f73;
+  }
+
+  75% {
+    scale: 0.98;
+    transform: rotate(1deg);
+  }
+
+  100% {
+    scale: 1.01;
+  }
+}
+
+@media (min-width: 640px) {
+  .section-shell {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-shell {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+
+  .thanks-text {
+    animation: none !important;
+  }
+}
